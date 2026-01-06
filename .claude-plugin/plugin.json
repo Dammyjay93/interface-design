@@ -1,0 +1,11 @@
+{
+  "name": "frontend-design",
+  "version": "1.0.0",
+  "description": "Create distinctive, production-grade frontend interfaces with high design quality",
+  "author": {
+    "name": "Damola Akinleye"
+  },
+  "repository": "https://github.com/Dammyjay93/claude-design-skill",
+  "license": "MIT",
+  "keywords": ["frontend", "design", "ui", "css", "react", "tailwind"]
+}

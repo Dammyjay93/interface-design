@@ -1,6 +1,6 @@
-# Design Principles Skill for Claude Code
+# Frontend Design Skill for Claude Code
 
-A Claude Code skill that enforces precise, crafted design for enterprise software, SaaS dashboards, and admin interfaces. Inspired by Linear, Notion, Stripe, and Vercel.
+A Claude Code skill that creates distinctive, production-grade frontend interfaces with high design quality. Inspired by Linear, Notion, Stripe, and Vercel.
 
 ## What It Does
 
@@ -23,37 +23,32 @@ See the difference at **[dashboard-v4-eta.vercel.app](https://dashboard-v4-eta.v
 
 ## Installation
 
-### Quick Install (macOS/Linux)
+### Plugin Install (Recommended)
 
-```bash
-mkdir -p ~/.claude/skills/design-principles
-curl -o ~/.claude/skills/design-principles/skill.md \
-  https://raw.githubusercontent.com/Dammyjay93/claude-design-skill/main/skill/skill.md
+```
+/plugin install github:Dammyjay93/claude-design-skill
 ```
 
-### Manual Install
+### Manual Install (Legacy)
 
-1. Create the skill directory:
-   ```bash
-   mkdir -p ~/.claude/skills/design-principles
-   ```
-
-2. Copy `skill/skill.md` to `~/.claude/skills/design-principles/skill.md`
-
-3. Restart Claude Code
+```bash
+mkdir -p ~/.claude/skills/frontend-design
+curl -o ~/.claude/skills/frontend-design/SKILL.md \
+  https://raw.githubusercontent.com/Dammyjay93/claude-design-skill/main/skills/SKILL.md
+```
 
 ## Usage
 
-The skill activates automatically when you ask Claude Code to build UI. You can also invoke it explicitly:
+The skill activates automatically when building web components, pages, or applications. It can also be invoked explicitly:
 
 ```
-/design-principles
+/frontend-design
 ```
 
-Or reference it in your prompt:
+Or referenced in prompts:
 
 ```
-Build a dashboard for [your use case]. Use the design-principles skill.
+Build a dashboard for [your use case]. Use the frontend-design skill.
 ```
 
 ## Design Directions
@@ -80,13 +75,16 @@ The skill supports multiple design personalities:
 ## File Structure
 
 ```
-~/.claude/skills/design-principles/
-└── skill.md          # The skill definition
+claude-design-skill/
+├── .claude-plugin/
+│   └── plugin.json   # Plugin manifest
+└── skills/
+    └── SKILL.md      # The skill definition
 ```
 
 ## Customization
 
-Fork this repo and modify `skill/skill.md` to match your design system. Key sections to customize:
+Fork this repo and modify `skills/SKILL.md` to match your design system. Key sections to customize:
 
 - **Design Directions** — Add your own personality options
 - **Color Foundation** — Define your brand colors
