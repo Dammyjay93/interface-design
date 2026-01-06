@@ -1,28 +1,43 @@
 ---
 name: frontend-design
-description: Create distinctive, production-grade frontend interfaces with high design quality. This skill should be used when the user asks to build web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics.
+description: Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics.
 ---
 
 # Frontend Design Skill
 
-This skill enforces precise, crafted design for enterprise software, SaaS dashboards, admin interfaces, and web applications. The philosophy is Jony Ive-level precision with intentional personality — every interface is polished, and each is designed for its specific context.
+This skill guides creation of distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics. The philosophy combines Jony Ive-level precision with intentional personality — every interface is polished, crafted for its specific context, and memorable.
 
-## Design Direction (REQUIRED)
+---
 
-**Before writing any code, commit to a design direction.** This is not optional.
+## Design Thinking (REQUIRED)
 
-### Context Analysis
+**Before writing any code, commit to a BOLD aesthetic direction.** This is not optional.
+
+### Creative Foundation
 
 Consider the following before designing:
+
+- **Purpose**: What problem does this interface solve? Who uses it?
+- **Tone**: Pick an extreme — don't settle for safe defaults (see Aesthetic Directions below)
+- **Constraints**: Technical requirements (framework, performance, accessibility)
+- **Differentiation**: What makes this UNFORGETTABLE? What's the one thing someone will remember?
+
+**CRITICAL**: Choose a clear conceptual direction and execute it with precision. Bold maximalism and refined minimalism both work — the key is intentionality, not intensity.
+
+### Context Analysis
 
 - **Product function** — A finance tool needs different energy than a creative tool
 - **User type** — Power users want density; occasional users want guidance
 - **Emotional job** — Trust? Efficiency? Delight? Focus?
 - **Distinctiveness** — Every product has a chance to feel memorable
 
-### Personality Options
+---
 
-Enterprise/SaaS UI has more range than assumed. Select from these directions:
+## Aesthetic Directions
+
+Enterprise/SaaS UI has more range than assumed. Select from these directions or blend two:
+
+### Enterprise Personalities
 
 **Precision & Density** — Tight spacing, monochrome, information-forward. For power users who live in the tool. Linear, Raycast, terminal aesthetics.
 
@@ -36,9 +51,27 @@ Enterprise/SaaS UI has more range than assumed. Select from these directions:
 
 **Data & Analysis** — Chart-optimized, technical but accessible, numbers as first-class citizens. For analytics, metrics, business intelligence.
 
+### Creative Extremes
+
+Push beyond safe defaults. Consider these as starting points:
+
+- **Brutally minimal** — stark, almost uncomfortable restraint
+- **Maximalist chaos** — layered, dense, overwhelming intentionally
+- **Retro-futuristic** — CRT glow, scan lines, analog-digital fusion
+- **Organic/natural** — flowing shapes, earth tones, breathing motion
+- **Luxury/refined** — precious metals, silk textures, whisper-quiet
+- **Playful/toy-like** — bouncy, colorful, delightfully naive
+- **Editorial/magazine** — dramatic typography, white space as content
+- **Brutalist/raw** — exposed structure, anti-polish aesthetic
+- **Art deco/geometric** — ornate symmetry, gold accents, 1920s glamour
+- **Soft/pastel** — gentle gradients, rounded everything, cloud-like
+- **Industrial/utilitarian** — exposed grids, warning colors, functional beauty
+
 Pick one or blend two. Commit to a direction that fits the product.
 
-### Color Foundation
+---
+
+## Color Foundation
 
 Avoid defaulting to warm neutrals. Consider the product:
 
@@ -51,7 +84,11 @@ Avoid defaulting to warm neutrals. Consider the product:
 
 **Accent color** — Pick ONE that means something. Blue for trust. Green for growth. Orange for energy. Violet for creativity. Avoid reaching for the same accent every time.
 
-### Layout Approach
+**CRITICAL**: Dominant colors with sharp accents outperform timid, evenly-distributed palettes.
+
+---
+
+## Layout Approach
 
 Content drives layout:
 
@@ -61,14 +98,44 @@ Content drives layout:
 - **Top navigation** — for simpler tools with fewer sections
 - **Split panels** — for list-detail patterns where context matters
 
-### Typography Selection
+### Spatial Composition
 
-Typography sets tone:
+Break conventional layouts through:
 
-- **System fonts** — fast, native, invisible (utility-focused products)
-- **Geometric sans** (Geist, Inter) — modern, clean, technical
+- **Asymmetry** — intentional imbalance creates visual interest
+- **Overlap** — elements breaking their containers
+- **Diagonal flow** — eye movement beyond horizontal/vertical
+- **Grid-breaking elements** — strategic rule violations
+- **Generous negative space** OR **controlled density** — both work, commit to one
+
+---
+
+## Typography
+
+Typography sets tone and is often the single most impactful design decision.
+
+### Font Selection
+
+Choose fonts that are beautiful, unique, and interesting. **Avoid generic fonts like Arial, Inter, Roboto, and system fonts** — opt for distinctive choices that elevate the aesthetics.
+
+- **System fonts** — fast, native, invisible (only for utility-focused products)
+- **Geometric sans** (Geist, Plus Jakarta Sans) — modern, clean, technical
 - **Humanist sans** (SF Pro, Satoshi) — warmer, more approachable
 - **Monospace influence** — technical, developer-focused, data-heavy
+- **Display fonts** — distinctive headlines that anchor the design
+
+**Pair a distinctive display font with a refined body font.** Unexpected, characterful font choices create memorable interfaces.
+
+### Typography Hierarchy
+
+- Headlines: 600 weight, tight letter-spacing (-0.02em)
+- Body: 400-500 weight, standard tracking
+- Labels: 500 weight, slight positive tracking for uppercase
+- Scale: 11px, 12px, 13px, 14px (base), 16px, 18px, 24px, 32px
+
+### Monospace for Data
+
+Numbers, IDs, codes, timestamps belong in monospace. Use `tabular-nums` for columnar alignment. Mono signals "this is data."
 
 ---
 
@@ -159,28 +226,11 @@ UI controls deserve container treatment. Date pickers, filters, dropdowns — th
 
 **Custom select triggers must use `display: inline-flex` with `white-space: nowrap`** to keep text and chevron icons on the same row.
 
-### Typography Hierarchy
-
-- Headlines: 600 weight, tight letter-spacing (-0.02em)
-- Body: 400-500 weight, standard tracking
-- Labels: 500 weight, slight positive tracking for uppercase
-- Scale: 11px, 12px, 13px, 14px (base), 16px, 18px, 24px, 32px
-
-### Monospace for Data
-
-Numbers, IDs, codes, timestamps belong in monospace. Use `tabular-nums` for columnar alignment. Mono signals "this is data."
-
 ### Iconography
 
 Use **Phosphor Icons** (`@phosphor-icons/react`). Icons clarify, not decorate — if removing an icon loses no meaning, remove it.
 
 Give standalone icons presence with subtle background containers.
-
-### Animation
-
-- 150ms for micro-interactions, 200-250ms for larger transitions
-- Easing: `cubic-bezier(0.25, 1, 0.5, 1)`
-- No spring/bouncy effects in enterprise UI
 
 ### Contrast Hierarchy
 
@@ -191,6 +241,45 @@ Build a four-level system: foreground (primary) → secondary → muted → fain
 Gray builds structure. Color only appears when it communicates: status, action, error, success. Decorative color is noise.
 
 When building data-heavy interfaces, ask whether each use of color earns its place. Score bars do not need color-coded performance — a single muted color works. Grade badges do not need traffic-light colors — typography can do the hierarchy work.
+
+---
+
+## Motion & Animation
+
+### Philosophy
+
+Focus on high-impact moments: one well-orchestrated page load with staggered reveals (`animation-delay`) creates more delight than scattered micro-interactions.
+
+### Timing
+
+- 150ms for micro-interactions
+- 200-250ms for larger transitions
+- Easing: `cubic-bezier(0.25, 1, 0.5, 1)`
+- No spring/bouncy effects in enterprise UI (unless the aesthetic explicitly calls for playfulness)
+
+### Motion Patterns
+
+- **Staggered reveals** — elements entering in sequence
+- **Scroll-triggered effects** — content appearing as user scrolls
+- **Hover states that surprise** — unexpected but delightful responses
+- **Prioritize CSS-only solutions** for HTML; use Motion library for React when available
+
+---
+
+## Backgrounds & Visual Details
+
+Create atmosphere and depth rather than defaulting to solid colors. Add contextual effects and textures that match the overall aesthetic:
+
+- **Gradient meshes** — organic color blending
+- **Noise textures** — tactile, analog feel
+- **Geometric patterns** — structured, mathematical
+- **Layered transparencies** — depth through overlap
+- **Dramatic shadows** — theatrical lighting
+- **Decorative borders** — ornate or minimal framing
+- **Custom cursors** — interactive personality
+- **Grain overlays** — photographic, filmic quality
+
+Match background treatment to the aesthetic direction. A brutalist interface doesn't need gradient meshes. A luxury interface doesn't need geometric patterns.
 
 ---
 
@@ -220,6 +309,18 @@ Dark interfaces have different needs:
 
 ## Anti-Patterns
 
+### AI Slop to Avoid
+
+NEVER use generic AI-generated aesthetics:
+
+- **Overused font families**: Inter, Roboto, Arial, system fonts for creative work
+- **Clichéd color schemes**: particularly purple gradients on white backgrounds, the ubiquitous blue (#3B82F6)
+- **Predictable layouts**: same hero section, same card grid, same footer
+- **Cookie-cutter patterns**: lacking context-specific character
+- **Convergent choices**: Space Grotesk appearing in every generation
+
+Every design should be different. Vary between light and dark themes, different fonts, different aesthetics. NEVER converge on common choices across generations.
+
 ### Never Do This
 
 - Dramatic drop shadows (`box-shadow: 0 25px 50px...`)
@@ -228,7 +329,7 @@ Dark interfaces have different needs:
 - Pure white cards on colored backgrounds
 - Thick borders (2px+) for decoration
 - Excessive spacing (margins > 48px between sections)
-- Spring/bouncy animations
+- Spring/bouncy animations in enterprise contexts
 - Gradients for decoration
 - Multiple accent colors in one interface
 
@@ -239,6 +340,8 @@ Dark interfaces have different needs:
 - "Does this element feel crafted?"
 - "Is my depth strategy consistent and intentional?"
 - "Are all elements on the grid?"
+- "Would someone remember this interface tomorrow?"
+- "Am I reaching for the same solution I used last time?"
 
 ---
 
@@ -248,4 +351,8 @@ Every interface should look designed by a team that obsesses over 1-pixel differ
 
 Different products want different things. A developer tool wants precision and density. A collaborative product wants warmth and space. A financial product wants trust and sophistication. Let the product context guide the aesthetic.
 
+**Match implementation complexity to the aesthetic vision.** Maximalist designs need elaborate code with extensive animations and effects. Minimalist or refined designs need restraint, precision, and careful attention to spacing, typography, and subtle details. Elegance comes from executing the vision well.
+
 The goal: intricate minimalism with appropriate personality. Same quality bar, context-driven execution.
+
+**Remember: Claude is capable of extraordinary creative work. Don't hold back — show what can truly be created when thinking outside the box and committing fully to a distinctive vision.**
