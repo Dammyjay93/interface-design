@@ -1,5 +1,5 @@
 ---
-name: design-engineer
+name: designer-engineer
 description: Smart dispatcher - detects mode and builds UI with craft, memory, and enforcement.
 ---
 
