@@ -49,26 +49,31 @@ See the difference: **[dashboard-v4-eta.vercel.app](https://dashboard-v4-eta.ver
 
 ## Installation
 
-### Plugin (Recommended - Full Features)
+### Plugin (Recommended)
 
 ```bash
-/plugin marketplace add Dammyjay93/oakinleye
+# Add the marketplace
+/plugin marketplace add Dammyjay93/claude-design-engineer
+
+# Install the plugin
+/plugin marketplace install design-engineer design-engineer
 ```
 
-Then run `/plugin install design-engineer` to install. Restart Claude Code after.
+Restart Claude Code after installing.
 
 Gets you:
-- ✅ Smart workflows (APPLY, ESTABLISH, EXTEND modes)
-- ✅ Automatic system.md loading every session
-- ✅ Post-write validation hooks
-- ✅ Commands (/design-engineer status, audit, extract)
+- Smart workflows (APPLY, ESTABLISH, EXTEND modes)
+- Automatic system.md loading every session
+- Post-write validation hooks
+- Commands (/design-engineer status, audit, extract)
 
 ### Manual (Advanced)
 
 ```bash
 git clone https://github.com/Dammyjay93/claude-design-engineer.git
 cd claude-design-engineer
-cp -r . ~/.claude/plugins/design-engineer
+cp -r .claude/* ~/.claude/
+cp -r .claude-plugin/* ~/.claude-plugin/
 ```
 
 Restart Claude Code.
@@ -246,9 +251,9 @@ See `reference/examples/` for complete system files:
 
 ## Migration from claude-design-skill
 
-**This repo was renamed from `claude-design-skill` (983⭐).**
+**This repo was renamed from `claude-design-skill`.**
 
-All old URLs redirect automatically
+All old URLs redirect automatically.
 
 **If you installed the old skill:**
 
@@ -257,8 +262,8 @@ All old URLs redirect automatically
 rm -rf ~/.claude/skills/design-principles
 
 # Install new plugin
-/plugin marketplace add Dammyjay93/oakinleye
-/plugin install design-engineer
+/plugin marketplace add Dammyjay93/claude-design-engineer
+/plugin marketplace install design-engineer design-engineer
 ```
 
 Your system.md files (if any) continue to work — just rename `.ds-engineer/` to `.design-engineer/`.
@@ -282,5 +287,5 @@ MIT — See [LICENSE](LICENSE)
 ---
 
 <p align="center">
-  Part of <a href="https://github.com/Dammyjay93/oakinleye">oakinleye</a> plugin collection
+  <a href="https://design-engineer.vercel.app">Website</a> · <a href="https://github.com/Dammyjay93/claude-design-engineer">GitHub</a>
 </p>
