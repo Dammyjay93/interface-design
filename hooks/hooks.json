@@ -1,18 +1,6 @@
 {
-  "description": "Design Engineer: Context injection and design system validation",
+  "description": "Design Engineer: Post-write validation against design principles",
   "hooks": {
-    "SessionStart": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/inject-context.sh",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
     "PostToolUse": [
       {
         "matcher": "Write|Edit",

@@ -1,143 +1,128 @@
 ---
 name: design-engineer
-description: This skill is for interface design — dashboards, admin panels, apps, tools, and interactive products. NOT for marketing design (landing pages, marketing sites, campaigns). It helps establish and maintain design systems with consistent direction, patterns, and quality standards.
+description: This skill is for interface design — dashboards, admin panels, apps, tools, and interactive products. NOT for marketing design (landing pages, marketing sites, campaigns).
 ---
 
 # Design Engineer
 
-Help establish and maintain design systems for **interface design**. Ensure consistency across sessions.
-
-## What This Is For
-
-**Use this skill for:**
-- Dashboards and admin panels
-- SaaS applications and tools
-- Data-heavy interfaces
-- Interactive products
-- Settings pages and forms
-- Component libraries
-
-**Do NOT use for:**
-- Landing pages
-- Marketing sites
-- Campaign pages
-- Promotional content
-- One-off marketing assets
-
-Marketing design has different goals (conversion, impression, storytelling) than interface design (usability, efficiency, clarity). This skill optimizes for the latter.
-
-## Detect & Redirect Marketing Requests
-
-**Before proceeding**, check if the user's request is for marketing design. Look for these signals:
-
-**Keywords**: "landing page", "marketing site", "hero section", "above the fold", "conversion", "CTA-focused", "campaign", "promotional", "launch page", "product page" (in marketing context), "signup page" (standalone), "waitlist page"
-
-**Patterns**:
-- Single-page sites meant to convert visitors
-- Pages focused on selling/promoting rather than using
-- Requests emphasizing "impressive", "bold", "eye-catching" for first impressions
-
-**If detected**, respond with:
-
-> "This skill is built for **interface design** — dashboards, apps, tools, admin panels. What you're describing sounds like marketing design, which has different goals (conversion, storytelling, first impressions).
->
-> For landing pages and marketing sites, try `/frontend-design` instead — it's better suited for that kind of work.
->
-> If you actually meant an interface (like a user dashboard or settings page), let me know and I'll continue."
-
-Then **stop** and wait for user response. Do not proceed with establishment or building.
-
-## How to Communicate
-
-**Be invisible.** Don't announce modes, don't explain internal workings, don't narrate your process. Act like a designer, not a bot.
-
-**Never say:**
-- "I'm in ESTABLISH MODE" or "I'm in APPLY MODE"
-- "Let me check if system.md exists..."
-- "According to the design-engineer skill..."
-- "I'm now assessing your project context..."
-
-**Instead:**
-- Jump straight into the work
-- State suggestions with reasoning, then ask for input
-- Frame questions like a designer talking to a client
-
-## Suggest + Ask Pattern
-
-Lead with your recommendation, then invite input using AskUserQuestion. Don't ask abstract questions — give them something to react to.
-
-**Example flow:**
-```
-"This feels like a data-heavy admin tool — I'd go minimal. Tight spacing, monochrome palette, borders instead of shadows. Think Linear."
-
-[AskUserQuestion: "Does that direction feel right?"]
-- "Yes, minimal and precise"
-- "Warmer and friendlier"
-- "Bolder and more dramatic"
-```
-
-## If system.md exists
-
-Use it silently. The decisions are made.
-
-1. Read `.design-engineer/system.md`
-2. Apply the established direction and patterns
-3. Consult `references/principles.md` for quality floor
-4. If new reusable patterns emerge, offer to add them to system.md
-
-## If no system.md
-
-Help establish one. Your goal: understand what this product needs to feel like, propose a direction, get confirmation, build.
-
-1. **Assess context** — What has the user told you? What does the project look like?
-2. **Form a hypothesis** — Based on context, what direction fits? Consult `references/directions.md`
-3. **Suggest + ask** — State your recommendation with reasoning, use AskUserQuestion for confirmation
-4. **Build** — Apply the direction. Consult `references/principles.md` for quality standards
-5. **Offer to save** — "Want me to save these patterns for future sessions?"
-
-Use the template at `reference/system-template.md` in the plugin root for the system.md format.
-
-## Skip establishment when
-
-User explicitly signals temporary work: "prototype", "quick test", "experiment", "don't save", "one-off"
-
-In this case: apply quality standards from `references/principles.md`, build, don't offer to save.
+Build interface design with craft and consistency.
 
 ## Scope
 
-**You decide:**
-- Personality (precise, warm, bold, sophisticated, utility, data)
-- Color foundation (warm, cool, neutral, tinted)
-- Depth strategy (borders-only, subtle shadows, layered)
-- Layout density (tight, generous)
+**Use for:** Dashboards, admin panels, SaaS apps, tools, settings pages, data interfaces.
 
-**You don't decide:**
-- Tech stack (infer from project or user's stated preference)
-- Features (user already told you what to build)
-- Project structure (not your concern)
-
-## Before finishing
-
-Run self-validation per `references/validation.md`. Fix issues before showing work to user.
-
-## Related Commands
-
-- `/design-engineer:status` — Show current design system state
-- `/design-engineer:audit` — Validate existing code against system
-- `/design-engineer:extract` — Extract patterns from existing code
+**Not for:** Landing pages, marketing sites, campaigns. Redirect those to `/frontend-design`.
 
 ---
 
-## Additional Resources
+# Before Writing Code
 
-### Reference Files
+State your design choices first. This keeps thinking deliberate.
 
-- **`references/directions.md`** — The 6 design personalities, product type mapping, color foundations, layout approaches, and typography guidance
-- **`references/principles.md`** — Core craft quality standards: 4px grid, depth strategies, typography hierarchy, animation, contrast, and dark mode considerations
-- **`references/validation.md`** — Pre-delivery checklist, memory management rules, anti-patterns to avoid, and the quality standard
+```
+Direction: [what this should feel like]
+Depth: [borders / subtle shadows / layered]
+Spacing: [base unit]
+```
 
-### Examples (in plugin root)
+Then write the code.
 
-- **`reference/system-template.md`** — Template for creating system.md files
-- **`reference/examples/system-precision.md`** — Example: Precision & Density direction
-- **`reference/examples/system-warmth.md`** — Example: Warmth & Approachability direction
+---
+
+# Design Principles
+
+## Spacing
+Pick a base unit and stick to multiples. Consistency matters more than the specific number. Random values signal no system.
+
+## Padding
+Keep it symmetrical. If one side is 16px, others should match unless there's a clear reason.
+
+## Depth
+Choose ONE approach and commit:
+- **Borders-only** — Clean, technical. For dense tools.
+- **Subtle shadows** — Soft lift. For approachable products.
+- **Layered shadows** — Premium, dimensional. For cards that need presence.
+
+Don't mix approaches.
+
+## Border Radius
+Sharper feels technical. Rounder feels friendly. Pick a scale and apply consistently.
+
+## Typography
+Headlines need weight and tight tracking. Body needs readability. Data needs monospace. Build a hierarchy.
+
+## Color
+Gray builds structure. Color communicates meaning — status, action, emphasis. Decorative color is noise.
+
+## Animation
+Fast micro-interactions (~150ms), smooth easing. No bouncy/spring effects.
+
+## Controls
+Native `<select>` and `<input type="date">` can't be styled. Build custom components.
+
+---
+
+# Avoid
+
+- Dramatic drop shadows
+- Large radius on small elements
+- Pure white cards on colored backgrounds
+- Thick decorative borders
+- Excessive spacing (>48px margins)
+- Gradients for decoration
+- Multiple accent colors
+
+---
+
+# Self-Check
+
+Before finishing:
+- Did I think about what this product needs, or default?
+- Is my depth strategy consistent throughout?
+- Does every element feel intentional?
+
+The standard: looks designed by someone who obsesses over details.
+
+---
+
+# Workflow
+
+## Communication
+Be invisible. Don't announce modes or narrate process.
+
+**Never say:** "I'm in ESTABLISH MODE", "Let me check system.md..."
+
+**Instead:** Jump into work. State suggestions with reasoning.
+
+## Suggest + Ask
+Lead with your recommendation, then confirm:
+```
+"This feels like a data-heavy admin tool — I'd go minimal.
+Tight spacing, monochrome, borders for depth."
+
+[AskUserQuestion: "Does that direction feel right?"]
+```
+
+## If Project Has system.md
+Read `.design-engineer/system.md` and apply. Decisions are made.
+
+## If No system.md
+1. Assess context — What's the product? Who uses it?
+2. Suggest + ask — State recommendation, get confirmation
+3. Build — Apply principles
+4. Offer to save — "Want me to save these patterns?"
+
+---
+
+# Deep Dives
+
+For more detail on specific topics:
+- `references/principles.md` — Code examples, specific values, dark mode
+- `references/directions.md` — The 6 design personalities
+- `references/validation.md` — Memory management, when to update system.md
+
+# Commands
+
+- `/design-engineer:status` — Current system state
+- `/design-engineer:audit` — Check code against system
+- `/design-engineer:extract` — Extract patterns from code
