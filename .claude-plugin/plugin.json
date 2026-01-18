@@ -1,7 +1,7 @@
 {
   "name": "design-engineer",
   "description": "Design engineering for Claude Code. Build interfaces with craft, memory, and consistency. Maintains design decisions across sessions.",
-  "version": "2026.1.18.2154",
+  "version": "2026.1.18.2206",
   "author": {
     "name": "Damola Akinleye",
     "url": "https://github.com/Dammyjay93"

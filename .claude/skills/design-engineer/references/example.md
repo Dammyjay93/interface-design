@@ -16,26 +16,13 @@ When you look at Vercel's dashboard, you don't think "nice borders." You just un
 
 ### The Surface Decisions
 
-```
-Base (canvas): hsl(0 0% 7%)
-Surface-100 (cards): hsl(0 0% 9%)      ← 2% lighter
-Surface-200 (dropdown): hsl(0 0% 11%)  ← 2% lighter again
-Surface-300 (nested): hsl(0 0% 13%)    ← 2% lighter again
-```
+**Why so subtle?** Each elevation jump should be only a few percentage points of lightness. You can barely see the difference in isolation. But when surfaces stack, the hierarchy emerges. This is the Vercel/Supabase way — whisper-quiet shifts that you feel rather than see.
 
-**Why so subtle?** Each jump is only ~2% lightness. You can barely see the difference in isolation. But when surfaces stack, the hierarchy emerges. This is the Vercel/Supabase way — whisper-quiet shifts that you feel rather than see.
-
-**What NOT to do:** Don't jump from 7% to 20% for your first elevation. That's jarring. Don't use different hues for different levels. Keep the same hue, shift only lightness.
+**What NOT to do:** Don't make dramatic jumps between elevations. That's jarring. Don't use different hues for different levels. Keep the same hue, shift only lightness.
 
 ### The Border Decisions
 
-```
-Border default: rgba(255, 255, 255, 0.06)
-Border subtle: rgba(255, 255, 255, 0.04)
-Border strong: rgba(255, 255, 255, 0.12)
-```
-
-**Why rgba, not solid colors?** Low opacity borders blend with their background. A 6% white border on a dark surface is barely there — it defines the edge without demanding attention. Solid `#333` borders look harsh in comparison.
+**Why rgba, not solid colors?** Low opacity borders blend with their background. A low-opacity white border on a dark surface is barely there — it defines the edge without demanding attention. Solid hex borders look harsh in comparison.
 
 **The test:** Look at your interface from arm's length. If borders are the first thing you notice, reduce opacity. If you can't find where regions end, increase slightly.
 
@@ -55,7 +42,7 @@ The dropdown floats above the card it emerged from. If both were surface-100, th
 
 **Why border-overlay instead of border-default?**
 
-Overlays (dropdowns, popovers) often need slightly more definition because they're floating in space. A touch more opacity (0.08 instead of 0.06) helps them feel contained without being harsh.
+Overlays (dropdowns, popovers) often need slightly more definition because they're floating in space. A touch more border opacity helps them feel contained without being harsh.
 
 ---
 
@@ -63,30 +50,21 @@ Overlays (dropdowns, popovers) often need slightly more definition because they'
 
 ### Input Background Decision
 
-```
-Control background: hsl(0 0% 5%)  ← darker than canvas
-```
-
 **Why darker, not lighter?**
 
 Inputs are "inset" — they receive content, they don't project it. A slightly darker background signals "type here" without needing heavy borders. This is the alternative-background principle.
 
 ### Focus State Decision
 
-```
-Default border: rgba(255, 255, 255, 0.06)
-Focus border: rgba(255, 255, 255, 0.20)
-```
+**Why subtle focus states?**
 
-**Why only 0.20 for focus?**
-
-Focus needs to be visible, but 0.20 is plenty for a clear state change from 0.06. You don't need a glowing ring or dramatic color. Subtle-but-noticeable — the same principle as surfaces.
+Focus needs to be visible, but you don't need a glowing ring or dramatic color. A noticeable increase in border opacity is enough for a clear state change. Subtle-but-noticeable — the same principle as surfaces.
 
 ---
 
-## What This Doesn't Prescribe
+## Adapt to Context
 
-These specific values (7%, 9%, 0.06 alpha) are examples. Your product might need:
+Your product might need:
 - Warmer hues (slight yellow/orange tint)
 - Cooler hues (blue-gray base)
 - Different lightness progression
