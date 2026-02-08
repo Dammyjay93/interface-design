@@ -5,13 +5,11 @@ description: Build UI with craft and consistency. For interface design (dashboar
 
 ## Required Reading — Do This First
 
-Before writing any code, read these files completely:
+Before writing any code, read this file completely:
 
-1. `~/.claude/skills/interface-design/SKILL.md` — the foundation, principles, and checks
-2. `~/.claude/skills/interface-design/references/principles.md` — detailed craft including subtle layering
-3. `~/.claude/skills/interface-design/references/example.md` — how decisions translate to code
+1. `../skills/interface-design/SKILL.md` — the foundation, principles, craft knowledge, and checks
 
-Do not skip this. The craft knowledge is in these files.
+Do not skip this. The craft knowledge is in this file.
 
 ---
 
