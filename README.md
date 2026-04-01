@@ -23,7 +23,7 @@
 
 ## What This Does
 
-When you build UI with Claude, design decisions get made: spacing values, colors, depth strategy, surface elevation. Without structure, those decisions drift across sessions.
+When you build UI with Claude Code or Antigravity, design decisions get made: spacing values, colors, depth strategy, surface elevation. Without structure, those decisions drift across sessions.
 
 **Interface Design helps you:**
 
@@ -81,6 +81,22 @@ cp -r .claude-plugin/* ~/.claude-plugin/
 ```
 
 Restart Claude Code.
+
+### Antigravity
+
+The installation is always manual for Antigravity:
+
+- **Local inside your desired repo**
+  ```bash
+  cp -r .agents/* <repository-path>/.agents/
+  ```
+- **Global**
+  ```bash
+  cp -r .agents/workflows/* ~/.gemini/antigravity/global_workflows/
+  cp -r .agents/skills/ ~/.gemini/antigravity/skills/
+  ```
+
+Restart Antigravity.
 
 ---
 
@@ -202,10 +218,21 @@ This file loads automatically at session start. Claude sees it and maintains con
 ## Commands
 
 ```bash
-/interface-design:init           # Start building with design principles
-/interface-design:status         # Show current system
-/interface-design:audit <path>   # Check code against system
-/interface-design:extract        # Extract patterns from existing code
+/interface-design:init                      # Start building with design principles
+/interface-design:status                    # Show current system
+/interface-design:audit <path>(optional)    # Check code against system
+/interface-design:extract <path>(optional)  # Extract patterns from existing code
+/interface-design:critique                  # Critique code against system
+```
+
+### Antigravity Workflows
+
+```bash
+/interface-design-init                      # Start building with design principles
+/interface-design-status                    # Show current system
+/interface-design-audit <path>(optional)    # Check code against system
+/interface-design-extract <path>(optional)  # Extract patterns from existing code
+/interface-design-critique                  # Critique code against system
 ```
 
 ---
