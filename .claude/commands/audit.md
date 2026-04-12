@@ -37,17 +37,30 @@ Check existing code against your design system.
 
 **Report format:**
 ```
-Audit Results: src/components/
+## Audit Results: src/components/
 
-Violations:
-  Button.tsx:12 - Height 38px (pattern: 36px)
-  Card.tsx:8 - Shadow used (system: borders-only)
-  Input.tsx:20 - Spacing 14px (grid: 4px, nearest: 12px or 16px)
+### Summary
+- X files scanned
+- X violations found across X categories
+- X patterns in compliance, X drifted
 
-Suggestions:
-  - Update Button height to match pattern
-  - Replace shadow with border
-  - Adjust spacing to grid
+### Spacing (X violations)
+- Button.tsx:12 — height 38px, expected 36px (4px grid)
+- Input.tsx:20 — padding 14px, not on grid (nearest: 12px or 16px)
+
+### Depth (X violations)
+- Card.tsx:8 — box-shadow used, system is borders-only
+
+### Colors (X violations)
+- Header.tsx:34 — #3b4f61 not in defined palette
+
+### Patterns (X violations)
+- Form.tsx:55 — custom button, does not match Button pattern
+
+### Fixes
+- Button.tsx:12 — 38px → 36px
+- Card.tsx:8 — remove shadow, add border: 1px solid var(--border)
+- Input.tsx:20 — 14px → 12px
 ```
 
 **If no system.md:**
