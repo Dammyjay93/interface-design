@@ -1,0 +1,7 @@
+interface:
+  display_name: "Interface Design"
+  short_description: "Build product UIs with intent, memory, and consistency."
+  brand_color: "#111827"
+  default_prompt: "Use Interface Design to build this product interface with a project-specific design system."
+policy:
+  allow_implicit_invocation: true

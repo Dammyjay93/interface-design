@@ -1,175 +1,136 @@
-# Interface Design
+# Interface Design for Codex
 
-<p align="center">
-  <strong>Craft · Memory · Consistency</strong>
-</p>
+Codex-first interface design skills for dashboards, admin panels, SaaS apps, tools, settings pages, data interfaces, and interactive products.
 
-<p align="center">
-  Build interfaces with intention. Remember decisions across sessions. Maintain systematic consistency.
-</p>
+Interface Design helps Codex make UI choices from product intent instead of generic dashboard defaults. It also keeps decisions in `.interface-design/system.md` so future UI work can reuse the same spacing, depth, tokens, and component patterns.
 
-<p align="center">
-  <em>For interface design — dashboards, apps, tools, admin panels. Not for marketing sites.</em>
-</p>
+This fork is adapted for **OpenAI Codex**. Claude Code command/plugin files are no longer the primary surface.
 
-<p align="center">
-  <a href="#installation">Install</a> ·
-  <a href="#how-it-works">How It Works</a> ·
-  <a href="https://interface-design.dev/examples.html">Examples</a> ·
-  <a href="https://interface-design.dev">Website</a>
-</p>
+## What It Provides
 
----
+- **`interface-design`** — build or refactor product interfaces with intent, domain exploration, craft checks, and design-system memory.
+- **`interface-design-status`** — summarize the current `.interface-design/system.md`.
+- **`interface-design-extract`** — infer a design system from existing frontend code and offer to write `.interface-design/system.md`.
+- **`interface-design-audit`** — audit UI code against `.interface-design/system.md`.
+- **`interface-design-critique`** — critique a built interface for generic/defaulted decisions and improve it.
 
-## What This Does
+Use this for product UI. Do not use it for landing pages, marketing sites, campaigns, or brand-only exploration.
 
-When you build UI with Claude, design decisions get made: spacing values, colors, depth strategy, surface elevation. Without structure, those decisions drift across sessions.
+## Repository Layout
 
-**Interface Design helps you:**
-
-1. **Craft** — Principle-based design that produces professional, polished interfaces
-2. **Memory** — Save decisions to `.interface-design/system.md`, load automatically
-3. **Consistency** — Every component follows the same principles throughout the session
-
-Make choices once. Apply them consistently.
-
-## Before & After
-
-**Without interface-design:**
-- Every session starts from scratch
-- Button heights drift (36px, 38px, 40px...)
-- Random spacing values (14px, 17px, 22px...)
-- No consistency across components
-
-**With interface-design:**
-- System loads automatically each session
-- Patterns reused (Button: 36px, Card: 16px pad)
-- Spacing on grid (4px, 8px, 12px, 16px)
-- Consistent depth and surface treatment throughout
-
-See the difference: **[interface-design.dev/examples.html](https://interface-design.dev/examples.html)**
-
----
-
-## Installation
-
-### Plugin (Recommended)
-
-```bash
-# Add the marketplace
-/plugin marketplace add Dammyjay93/interface-design
-
-# Install the plugin
-/plugin menu
+```text
+.
+├── .codex-plugin/
+│   └── plugin.json
+├── .agents/
+│   └── plugins/
+│       └── marketplace.json
+├── skills/
+│   ├── interface-design/
+│   │   ├── SKILL.md
+│   │   ├── agents/openai.yaml
+│   │   └── references/
+│   ├── interface-design-audit/
+│   ├── interface-design-critique/
+│   ├── interface-design-extract/
+│   └── interface-design-status/
+├── reference/
+│   ├── system-template.md
+│   └── examples/
+└── AGENTS.md
 ```
 
-Select `interface-design` from the menu. Restart Claude Code after.
+## Install For Local Testing
 
-Gets you:
-- Principle-based craft for every UI component
-- Automatic system.md loading every session
-- Per-component design checkpoint
-- Commands (/interface-design status, audit, extract)
-
-### Manual (Advanced)
+Clone the fork:
 
 ```bash
-git clone https://github.com/Dammyjay93/interface-design.git
+git clone https://github.com/Kirchberg/interface-design.git
 cd interface-design
-cp -r .claude/* ~/.claude/
-cp -r .claude-plugin/* ~/.claude-plugin/
 ```
 
-Restart Claude Code.
+Codex can read the repo-local marketplace at `.agents/plugins/marketplace.json`. Restart Codex from this repository and install the `interface-design` plugin from the local marketplace.
 
----
+For personal local testing, copy this plugin into a personal plugin folder and point `~/.agents/plugins/marketplace.json` at it:
 
-## How It Works
-
-### The Flow
-
-When you build UI with interface-design:
-
-**If system.md exists:**
-```
-✓ Reads skill files and principles
-✓ Loads .interface-design/system.md
-✓ Applies established patterns
-✓ States design choices before each component
-✓ Offers to save new patterns
+```bash
+mkdir -p ~/.codex/plugins
+cp -R "$(pwd)" ~/.codex/plugins/interface-design
+mkdir -p ~/.agents/plugins
 ```
 
-**If no system.md:**
-```
-1. Reads skill files and principles
-2. Assesses project context
-3. Suggests direction, asks for confirmation
-4. States design choices before each component
-5. Builds with consistent principles
-6. Offers to save system
-```
+Then add a personal marketplace entry like:
 
-### Example: First Session
-
-```
-You: "Build a user dashboard with metrics cards"
-
-Claude:
-This feels like a data-heavy dashboard — I'd suggest:
-- Depth: Borders-only (clean, technical)
-- Surfaces: Subtle elevation shifts
-- Spacing: 8px base
-
-Does this direction fit?
-
-[You: y]
-
-Depth: borders-only
-Surfaces: 7% → 9% → 11% lightness scale
-Borders: rgba(255,255,255,0.06)
-Spacing: 8px base
-
-[Builds dashboard with consistent depth, spacing, surfaces]
-
-Want me to save these patterns to .interface-design/system.md?
-
-[You: y]
-
-✓ System saved
+```json
+{
+  "name": "personal-plugins",
+  "interface": {
+    "displayName": "Personal Plugins"
+  },
+  "plugins": [
+    {
+      "name": "interface-design",
+      "source": {
+        "source": "local",
+        "path": "./.codex/plugins/interface-design"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Design"
+    }
+  ]
+}
 ```
 
-### Example: Second Session
+Restart Codex after changing marketplace or plugin files. Local plugins are installed into Codex's plugin cache, so edits to the source folder may require reinstalling or refreshing the cached copy.
 
-```
-You: "Add a settings page"
+## Use
 
-Claude:
-✓ Loaded system.md
+Ask Codex naturally:
 
-Depth: borders-only
-Surfaces: using established scale
-Borders: rgba(255,255,255,0.06)
-Spacing: 8px base
-
-[Builds settings page matching existing system]
-
-Want me to save any new patterns?
+```text
+Use Interface Design to build the analytics dashboard.
 ```
 
-The system **remembers** across sessions.
+```text
+Audit the settings UI against .interface-design/system.md.
+```
 
----
+```text
+Extract a design system from src/components and write .interface-design/system.md.
+```
 
-## System File
+You can also explicitly mention skills by name when your Codex surface supports skill mentions, for example `$interface-design-audit`.
 
-After establishing direction, your decisions live in `.interface-design/system.md`:
+## How The Main Skill Works
+
+When `interface-design` runs, Codex:
+
+1. Checks for `.interface-design/system.md`.
+2. Uses saved direction, tokens, depth, spacing, and component patterns when present.
+3. If no system exists, establishes a product-specific direction from:
+   - the human using the interface;
+   - the task they must perform;
+   - the intended feel;
+   - domain concepts and color world;
+   - one signature element;
+   - defaults to reject.
+4. Builds UI using token architecture, subtle layering, systematic spacing, clear typography, and explicit states.
+5. Evaluates the result with swap, squint, signature, token, and state checks.
+6. Offers to save reusable decisions to `.interface-design/system.md`.
+
+## System Memory
+
+`.interface-design/system.md` stores project-specific design decisions:
 
 ```markdown
 # Design System
 
 ## Direction
 Personality: Precision & Density
-Foundation: Cool (slate)
+Foundation: Cool slate
 Depth: Borders-only
 
 ## Tokens
@@ -177,101 +138,28 @@ Depth: Borders-only
 Base: 4px
 Scale: 4, 8, 12, 16, 24, 32
 
-### Colors
---foreground: slate-900
---secondary: slate-600
---accent: blue-600
-
 ## Patterns
 ### Button Primary
 - Height: 36px
 - Padding: 12px 16px
 - Radius: 6px
 - Usage: Primary actions
-
-### Card Default
-- Border: 0.5px solid
-- Padding: 16px
-- Radius: 8px
 ```
 
-This file loads automatically at session start. Claude sees it and maintains consistency.
+Templates and examples live in `reference/`.
 
----
+## Codex Notes
 
-## Commands
+- Skills live under `skills/` and are bundled by `.codex-plugin/plugin.json`.
+- The repo marketplace lives at `.agents/plugins/marketplace.json`.
+- `AGENTS.md` documents contribution expectations for Codex.
+- This plugin does not bundle hooks or rules by default. The workflow is guidance-oriented; add hooks only for deterministic enforcement.
+- Subagents are not auto-spawned by installing this plugin. Ask Codex explicitly when you want parallel agents.
 
-```bash
-/interface-design:init           # Start building with design principles
-/interface-design:status         # Show current system
-/interface-design:audit <path>   # Check code against system
-/interface-design:extract        # Extract patterns from existing code
-```
+## Credits
 
----
-
-## Design Directions
-
-The skill infers direction from project context, but you can customize:
-
-| Direction | Feel | Best For |
-|-----------|------|----------|
-| **Precision & Density** | Tight, technical, monochrome | Developer tools, admin dashboards |
-| **Warmth & Approachability** | Generous spacing, soft shadows | Collaborative tools, consumer apps |
-| **Sophistication & Trust** | Cool tones, layered depth | Finance, enterprise B2B |
-| **Boldness & Clarity** | High contrast, dramatic space | Modern dashboards, data-heavy apps |
-| **Utility & Function** | Muted, functional density | GitHub-style tools |
-| **Data & Analysis** | Chart-optimized, numbers-first | Analytics, BI tools |
-
----
-
-## Examples
-
-See live examples at **[interface-design.dev/examples.html](https://interface-design.dev/examples.html)**
-
-For system file templates, see `reference/examples/`:
-- **[system-precision.md](reference/examples/system-precision.md)** — Dashboard/admin interfaces
-- **[system-warmth.md](reference/examples/system-warmth.md)** — Collaborative/consumer apps
-
----
-
-## Migration from claude-design-skill
-
-**This repo was renamed from `claude-design-skill`.**
-
-All old URLs redirect automatically.
-
-**If you installed the old skill:**
-
-```bash
-# Uninstall old
-rm -rf ~/.claude/skills/design-principles
-
-# Install new plugin
-/plugin marketplace add Dammyjay93/interface-design
-/plugin menu
-```
-
-Your system.md files (if any) continue to work — just rename `.ds-engineer/` to `.interface-design/`.
-
----
-
-## Philosophy
-
-**Decisions compound.** A spacing value chosen once becomes a pattern. A depth strategy becomes an identity.
-
-**Consistency beats perfection.** A coherent system with "imperfect" values beats a scattered interface with "correct" ones.
-
-**Memory enables iteration.** When you can see what you decided and why, you can evolve intentionally instead of drifting accidentally.
-
----
+Based on the original `interface-design` / `claude-design-skill` work by Damola Akinleye, adapted here for OpenAI Codex-first usage.
 
 ## License
 
-MIT — See [LICENSE](LICENSE)
-
----
-
-<p align="center">
-  <a href="https://interface-design.dev">Website</a> · <a href="https://github.com/Dammyjay93/interface-design">GitHub</a>
-</p>
+MIT. See [LICENSE](LICENSE).

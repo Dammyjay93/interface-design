@@ -1,0 +1,40 @@
+{
+  "name": "interface-design",
+  "version": "2026.5.9.0",
+  "description": "Codex-first interface design skills for product UIs, dashboards, admin panels, tools, and design-system memory.",
+  "author": {
+    "name": "Kirchberg",
+    "url": "https://github.com/Kirchberg"
+  },
+  "homepage": "https://github.com/Kirchberg/interface-design",
+  "repository": "https://github.com/Kirchberg/interface-design",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "skill",
+    "interface-design",
+    "ui",
+    "ux",
+    "design-system",
+    "design-engineering"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Interface Design",
+    "shortDescription": "Craft product interfaces with intent, memory, and consistency.",
+    "longDescription": "A Codex-first design engineering plugin for dashboards, admin panels, SaaS apps, tools, settings pages, and data interfaces. It guides Codex to establish product-specific design intent, reuse .interface-design/system.md decisions, audit drift, extract patterns, and critique generic UI before delivery.",
+    "developerName": "Kirchberg",
+    "category": "Design",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/Kirchberg/interface-design",
+    "defaultPrompt": [
+      "Use Interface Design to build a dashboard with a product-specific visual system.",
+      "Use Interface Design to audit this UI against .interface-design/system.md.",
+      "Use Interface Design to extract a design system from the existing frontend."
+    ],
+    "brandColor": "#111827"
+  }
+}
