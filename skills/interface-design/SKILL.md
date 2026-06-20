@@ -1,6 +1,6 @@
 ---
 name: interface-design
-description: "Use for product interface design work in Codex: dashboards, admin panels, SaaS apps, tools, settings pages, data interfaces, UI components, design-system memory, and interaction craft. Do not use for landing pages, marketing sites, campaigns, or brand-only visual exploration."
+description: "Use for product interface design work in Codex: dashboards, admin panels, SaaS apps, tools, settings pages, data interfaces, UI components, visual direction, image-based references, design-system memory, and interaction craft. Do not use for landing pages, marketing sites, campaigns, or brand-only visual exploration."
 ---
 
 # Interface Design
@@ -15,6 +15,7 @@ Do not use this for marketing pages or campaign sites. Use the repository's norm
 2. Check whether `.interface-design/system.md` exists.
 3. If it exists, treat it as the project-specific source of truth for direction, tokens, depth, spacing, and reusable patterns.
 4. If it does not exist, establish a direction before major UI changes. If the user has provided enough context, choose a direction and state the rationale. If the user context is too thin and the design choice would be arbitrary, ask one concise question before implementing.
+5. For greenfield screens, major redesigns, vague visual direction, or post-build craft critique, read `references/imagegen.md` and use Codex image generation as a visual companion when available.
 
 ## Intent Before UI
 
@@ -63,6 +64,14 @@ If any answer is "common", "standard", "clean", or "it works", keep designing. T
 - Prefer native controls when they preserve accessibility and styling requirements. Build custom controls only when native controls cannot meet the product interaction or visual system.
 
 For deeper implementation details, read `references/principles.md` only when needed.
+
+## Visual Direction
+
+Use Codex image generation only when it clarifies a product UI decision. Good uses include direction boards, medium-fidelity UI references, screenshot paintovers, and project-bound raster assets such as empty states or onboarding images.
+
+Generated images are references, not implementation. Inspect them, reject generic SaaS defaults, extract useful decisions into tokens/layout/components, and verify the real UI in code. Save durable visual direction to `.interface-design/system.md` only when it should guide future sessions.
+
+Read `references/imagegen.md` for the full workflow before using image generation.
 
 ## Memory
 
@@ -119,3 +128,12 @@ If a check fails, fix the UI before final response. For a deeper post-build pass
 - `interface-design-extract`: extract a system from existing frontend code.
 - `interface-design-audit`: audit UI code against `.interface-design/system.md`.
 - `interface-design-critique`: critique and improve a built interface.
+
+## Codex Invocation
+
+Codex may expose `/interface-design` as a skill slash command, but it does not need Claude command files. If the user asks for these actions through `/interface-design`, `$interface-design`, or natural language, perform the equivalent inline:
+
+- `interface-design status`, `/interface-design status`, or `/interface-design:status`: read `.interface-design/system.md`, summarize direction, tokens, patterns, and last modified time. If missing, suggest extract or first-build setup.
+- `interface-design audit`, `/interface-design audit`, or `/interface-design:audit`: check UI files against `.interface-design/system.md` for spacing, depth, color, token, and pattern drift. Report file/line findings and fixes.
+- `interface-design extract`, `/interface-design extract`, or `/interface-design:extract`: scan UI files for repeated spacing, radius, colors, shadows, buttons, cards, and controls. Propose a `.interface-design/system.md`; write it only after user confirmation.
+- `interface-design critique`, `/interface-design critique`, or `/interface-design:critique`: review the current build for composition, craft, content coherence, and structural hacks; then patch the defaulted parts before responding.
