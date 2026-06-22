@@ -1,0 +1,67 @@
+---
+description: Use when user asks to audit or check their code against the design system for spacing, depth, color, and pattern violations.
+globs:
+alwaysApply: false
+---
+
+# Design System Audit
+
+Check existing code against your design system.
+
+## Usage
+
+User says "audit", "audit <path>", or "check against system".
+
+## What to Check
+
+**If `.interface-design/system.md` exists:**
+
+1. **Spacing violations**
+   - Find spacing values not on defined grid
+   - Example: 17px when base is 4px
+
+2. **Depth violations**
+   - Borders-only system → flag shadows
+   - Subtle system → flag layered shadows
+   - Allow ring shadows (0 0 0 1px)
+
+3. **Color violations**
+   - If palette defined → flag colors not in palette
+   - Allow semantic grays
+
+4. **Pattern drift**
+   - Find buttons not matching Button pattern
+   - Find cards not matching Card pattern
+
+**Report format:**
+```
+Audit Results: src/components/
+
+Violations:
+  Button.tsx:12 - Height 38px (pattern: 36px)
+  Card.tsx:8 - Shadow used (system: borders-only)
+  Input.tsx:20 - Spacing 14px (grid: 4px, nearest: 12px or 16px)
+
+Suggestions:
+  - Update Button height to match pattern
+  - Replace shadow with border
+  - Adjust spacing to grid
+```
+
+**If no system.md:**
+
+```
+No design system to audit against.
+
+Create a system first:
+1. Build UI → establish system automatically
+2. Run extract → create system from existing code
+```
+
+## Implementation
+
+1. Check for `.interface-design/system.md`
+2. Parse system rules
+3. Read target files (tsx, jsx, css, scss)
+4. Compare against rules
+5. Report violations with suggestions
